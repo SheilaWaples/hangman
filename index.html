@@ -1,20 +1,30 @@
-<DOCTYPE html>
-	<html>
-	<head>
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/main.css">
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+ 
+ <div id="container">
+	<h1>Mission:Word -- Walking Dead Edition</h1>
 
-		<body>
-			<div id="container">
-				<h1>Mission:Word -- Walking Dead Edition</h1>
-				<div id='wordField'>
-					
-				</div>
+<div id="displayBox">
+ <div id="input-box">GUESS A LETTER
+   <input type="text" id='insert'>
+    <input type="submit" name="" id='submit' value="submit">
+    <button onclick="playAgain()" id="startOver" >Start over</button>
+ </div>
+</div>
+      <div id="hintbox"></div>
+    
+        <div id= "hangman"></div>
+        <div id="guessLetters">Hint:</div>
+    
 
-			</div>
+    
 
-<!-- <img src="images/walking1.jpeg"> -->		
 <script type="text/javascript" src="index.js"></script>
-		</body>
-	</head>
-	</html>
+</body>
+</html>

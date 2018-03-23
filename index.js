@@ -1,56 +1,76 @@
-  var words=['Carl','Negan','Michonne','Zombies','Alexandria','Shiva','Rick','Terminus','Hilltop','Maggie','Lucille','Carol','Daryl','Shane','The Governor']
-  var word=words[Math.floor(Math.random ()* words.length)] 
-  var wordField = document.getElementById('wordField')
-    
+var playersLetter = document.getElementById("input");
+var hint =  document.getElementById("hintbox");
+// var hangman = document.getElementById("hangman");
+var guessLetters = document.getElementById("guessLetters");
+var letters = document.getElementsByClassName('letters');
+var characterNames = ["carl","negan", "lucille"];
+var tips = ["hint: Rick's son","hint: Leader of the Saviors"," hint: Negan's bat "]
+var word = Math.floor(Math.random() * characterNames.length);
+var currentWord = characterNames[word];
+var clue = tips[word];
+var displayBox= document.getElementById("displayBox");
+var chosenWord = currentWord.split('');
+var playerChances = 3;
+var puzzleLife = chosenWord.length;
+var win = "you win";
+var lose = "lose";
+var playersLetter = document.getElementById('insert');
+var submit = document.getElementById('submit');
+var hiddenLetters = document.createElement('div');
+hiddenLetters.setAttribute('class', 'dashes');
+var hintbox = document.getElementById('hintbox');
 
+
+guessLetters.innerHTML = clue;
+
+for (var i = 0; i < chosenWord.length; i++) {
+    var hiddenLetters = document.createElement('div')
+   hiddenLetters.setAttribute('class', 'dashes')
+   hiddenLetters.style.height = '35px';
+   hiddenLetters.style.width = '35px';
+   hiddenLetters.style.borderBottom = 'solid black';
+   hiddenLetters.style.display = 'inline-block';
+   hiddenLetters.style.marginLeft = '15px';
+   hiddenLetters.style.marginRight = '23px';
+   hiddenLetters.style.textAlign = 'center';
+   hiddenLetters.style.borderColor = 'red';
+   displayBox.appendChild(hiddenLetters);
+}    
+
+
+  submit.addEventListener('click', function(){
+  hintbox.innerHTML += playersLetter.value + ' '
  
-  var arrayWord = word.split("")
-  // console.log(arrayWord)
+ 
+  for(i=0; i<chosenWord.length; i++){
 
-  var dashArray=[];
-  for(let i=0; i<arrayWord.length; i++){
-   wordField.innerHTML += " _ ";
-    
-  function checkWord(guessedLetter){
-    if(currentWord.includes(guessedLetter)){
-        console.log('correct')
-    }else {
-        console.log('incorrect')
-    }
+    if(playersLetter.value == (chosenWord[i])){
+      var answerLetter = document.getElementsByClassName('dashes')[i]
+      answerLetter.innerHTML = playersLetter.value
+      puzzleLife--
+     }
+    if(puzzleLife == 0){
+      alert('you win');
+     }
+   
+  }
+
+  function scoreLetter(value){
+    return (chosenWord.indexOf(value) === -1) ? false : true  
+  }
+
+  if(scoreLetter(playersLetter.value)== false){
+    playerChances--
+    alert("Wrong letter. You have " + playerChances + ' ' + 'lives left')
+  }
+   if(playerChances <= 0){
+    alert('you lose');
+  }
+ 
+
+})
+function playAgain() {
+
+
+ window.location.reload();
 }
-  }	
-
-var alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y',
-'z']
-for(let i=0; i<alphabet.length; i++){
-
-	var div=document.createElement("DIV");
-	var letters=document.createTextNode(alphabet[i]);
-	div.appendChild(letters);
-	div.style.width="40px";
-	div.style.height="40px";
-	div.style.border="3px solid";
-	div.style.margin="10px";
-	div.classList.add('box');
-	div.style.display="inline-block";
-	document.body.appendChild(div);
-	var boxes= document.getElementsByClassName('box');
-	boxes[i].addEventListener('click', function(){
-		showLetter(i);
-		//console.log(i);
-	})
-}
-
-function showLetter(currentItem){
-	console.log(alphabet[currentItem])
-}
-
-var answer=[]
-for (i=0, i<=answer.length, i++){
-	if
-		else
-}
-
-
-
-
